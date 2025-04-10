@@ -1,0 +1,440 @@
+@x-szary: rgb(34, 35, 42);
+@c-szary: #232a34;
+@j-szary: #2b333e;
+@jj-szary: #f2f2f2;
+@krawedz: #303947;
+@sz-txt: #505865;
+@pomarancz: #f2ab37;
+
+@import 'mixins.less';
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
+
+body:after {
+    content: url(../../grafiki/home.jpg) url(../../grafiki/o-nas.jpg);
+    display: none;    
+}
+
+body.row {
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 0;
+    margin-right: 0;
+    background: @x-szary;
+    h1 {
+        font-size: 42px;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 1.2em;
+        margin-bottom: 30px;
+        color: @c-szary;
+    }
+    p {
+        font-size: 16px;
+        line-height: 1.4em;
+        text-align: justify;
+        color: @c-szary;
+    }
+    a {
+        color: @x-szary;
+        .transition(.3s);
+        &:hover {
+            color: @pomarancz;
+            text-decoration: none;
+            .transition(.2s);
+        }
+    }
+    .btn.focus, .btn:focus {
+        box-shadow: 0 0 0 #fff;
+    }
+    .btn {
+        padding: 14px 21px;
+        font-weight: 500;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #fff;
+        background: @pomarancz;
+        cursor: pointer;
+        .radius(2px);
+        .transition(.3s);
+        &:hover {
+            color: #fff;
+            background: darken(@pomarancz, 10%);
+            .transition(.2s);
+        }
+        &.dol {
+            &:before {
+                content: "\f078";display: inline-block;
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size: inherit;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                margin-right: 21px;
+            }
+        }
+    }
+    form {
+        input {
+            width: 100%;
+            height: 55px;
+            padding: 0 21px;
+            margin-bottom: 21px;
+            border: 1px solid @jj-szary;
+            &#fax {
+                display: none;
+            }
+        }
+        textarea {
+            width: 100%;
+            padding: 14px 21px;
+            margin-bottom: 21px;
+            min-height: 200px;
+            border: 1px solid @jj-szary;
+        }
+    }
+    #accordion {
+        .card {
+            .card-header {
+                padding: 0;
+                h5 {
+                    font-weight: 500;
+                    font-size: 1.3em;
+                    a {
+                        display: block;
+                        padding: .75rem 1.25rem;
+                    }
+                }
+            }
+            .card-block {
+                padding: 14px 21px;
+                text-align: justify;
+            }
+        }
+    }
+    div.txt-blok {
+        position: absolute;
+        bottom: 0;
+        width: 60%;
+        margin: 10% 5% 5% 5%;
+        padding: 2% 3%;
+        .opacity(1);
+        .radius(2px);
+        .transition(1s);
+        &.loading {
+            margin: 10% 5% 2% 5%;
+            .opacity(0);
+        }
+        &.jasny {
+            background: rgba(255,255,255,0.7);
+        }
+    }
+    div.blok {
+        padding: 5%;
+        h1 {
+            font-size: 80px;
+        }
+        h2 {
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 70px;
+        }    
+    }
+    header.col-md-2 {
+        padding-right: 0;
+        padding-left: 0;
+        background: @c-szary;
+        border-right: 1px solid @krawedz;
+        .przyklej.col-md-2 {
+            position: fixed;
+            padding-left: 0;
+            padding-right: 0;
+            #logo {
+                background-color: @j-szary;
+                text-align: center;
+                a {
+                    display: block;
+                    img {
+                        margin: 21px 0 14px 0;
+                    }
+                    p {
+                        color: @sz-txt;
+                        font-weight: bold;
+                        text-align: center;
+                        text-transform: uppercase;
+                        margin-bottom: 0;
+                        padding-bottom: 7px;
+                    }
+                }
+            }
+            nav {
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    margin-bottom: 0;
+                    li {
+                        text-align: center;
+                        a {
+                            display: block;
+                            padding: 30px 0;
+                            color: @sz-txt;
+                            font-size: 0.8em;
+                            border-top: 1px solid @krawedz;
+                            i.fa {
+                                display: block;
+                                font-size: 2.6em;
+                                margin-bottom: 7px;
+                            }
+                            &:hover {
+                                color: @pomarancz;
+                            }
+                            &.aktywny {
+                                color: @pomarancz;
+                            }
+                        }
+                        &:last-child {
+                            border-bottom: 1px solid @krawedz;
+                        }
+                    }
+                }
+                i.fa-bars {
+                    display: none;
+                }
+            }            
+        }
+    }
+    main.col-md-10 {
+        padding-left: 0;
+        padding-right: 0;
+        section {
+            &.row {
+                margin-left: 0;
+                margin-right: 0;
+                div[class^='col-md-'] {
+                    padding-left: 0;
+                    padding-right: 0;                    
+                }
+            }
+            &#home {
+                position: relative;
+                #homeIner {
+                    position: fixed;
+                    width: 100%;
+                    background-image: url('../../grafiki/home.jpg');
+                    background-size: 100% auto;
+                    background-position: center center;    
+                    h2 {
+                        width: 83%;
+                        color: #fff;
+                        font-weight: bold;
+                        text-align: center;
+                        margin-top: 3%;
+                        font-size: 50px;
+                        text-shadow: 0 0 33px #555;
+                        text-transform: uppercase;
+                        .transition(.9s);
+                        &.loading {
+                            margin-top: 0%;
+                            .opacity(0);
+                        }
+                    }                    
+                }
+            }
+            &#o-nas {
+                position: relative;
+                background: #fff;
+                div.col-md-8 {
+                    div.blok {
+                        h1 {
+                            color: @jj-szary;
+                        }
+                        h2 {
+                            color: @c-szary;
+                        }                        
+                    }
+                }
+                div.col-md-4 {
+                    background-image: url('../../grafiki/o-nas.jpg');
+                    background-size: auto auto;
+                    background-position: center center;                     
+                }
+            }
+            &#oferta {
+                position: relative;
+                background: @jj-szary;
+                div.col-md-8 {
+                    div.blok {
+                        h1 {
+                            color: #fff;
+                            text-shadow: 0 0 14px #ccc;
+                        }
+                        h2 {
+                            color: @c-szary;
+                        }                        
+                    }                    
+                }
+                div.col-md-4 {
+                    background-image: url('../../grafiki/oferta.jpg');
+                    background-size: auto auto;
+                    background-position: 67% center;                     
+                }                
+            }
+            &#zaufali-nam {
+                position: relative;
+                background: @c-szary;
+                div.col-md-8 {
+                    div.blok {
+                        h1 {
+                            color: @j-szary;
+                        }
+                        h2 {
+                            color: #fff;
+                        }
+                        ul {
+                            padding: 0;
+                            margin-top: 70px;
+                            li {
+                                list-style: none;
+                                a {
+                                    display: block;
+                                    img {
+                                        width: 100%;
+                                        .transition(.3s);
+                                        .grayscale(1);
+                                    }
+                                    &:hover {
+                                        img {
+                                            .transition(.2s);
+                                            .grayscale(0);
+                                        }
+                                    }
+                                }
+                                &.col-md-6 {
+                                    margin: 0 0 30px 0;
+                                }
+                            }
+                        }
+                    }                    
+                }
+                div.col-md-4 {
+                    background-image: url('../../grafiki/zaufali-nam-1.jpg');
+                    background-size: auto auto;
+                    background-position: center right;                     
+                }                 
+            }
+            &#kontakt {
+                position: relative;
+                background: #fff;
+                div.col-md-8 {
+                    div.blok {
+                        h1 {
+                            color: @jj-szary;
+                        }
+                        strong {
+                            display: block;
+                            font-size: 1.8em;
+                            margin-bottom: 14px;
+                        }
+                        i {
+                            display: inline-block;
+                            width: 16px;
+                            text-align: center;
+                            margin-right: 7px;
+                            &.fa-mobile {
+                                font-size: 1.4em;
+                            }
+                        }
+                    }
+                }
+                div.col-md-4 {
+                    background-image: url('../../grafiki/kontakt.jpg');
+                    background-size: auto 100%;
+                    background-position: center center;                     
+                }                 
+            }
+        }   
+        @footerH: 42px;
+        footer {
+            position: relative;
+            width: 100%;
+            background: @c-szary;
+            margin-left: 0;
+            margin-right: 0;
+            height: @footerH;
+            padding: 15px 0 15px 0;
+            box-sizing: content-box;
+            div.col-md-12 {
+                padding-left: 0;
+                padding-right: 0;
+                p {
+                    color: @sz-txt;
+                    font-size: 12px;
+                    line-height: 1em;
+                    margin: 0;
+                    line-height: @footerH;
+                    padding: 0 15px;
+                }
+                #social {
+                    position: fixed;
+                    right: 70px;
+                    bottom: 14px;
+                    margin: 0;
+                    li {
+                        float: left;
+                        list-style: none;
+                        a {
+                            display: block;
+                            width: @footerH;
+                            height: @footerH;  
+                            background-color: @pomarancz;
+                            .radius(3px);                            
+                            line-height: @footerH;
+                            color: #fff;
+                            font-size: 26px;
+                            text-align: center;
+                            margin: 0 7px;
+                            .transition(.3s);
+                            &:hover {
+                                background-color: darken(@pomarancz, 10%);
+                                .transition(.2s);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #na-gore {
+        position: fixed;
+        z-index: 9;
+        bottom: -1px;
+        right: 130px;
+        display: block;
+        width: 48px;
+        height: 35px;
+        line-height: 35px;
+        color: #fff;
+        text-align: center;
+        font-size: 26px;
+        border: 1px solid @krawedz;
+        .radius(3px 3px 0 0);
+        background: @c-szary;
+        cursor: pointer;
+        .opacity(0);
+        .transition(.3s);
+        &.fade-in {
+            .opacity(0.8);
+            .transition(.2s);
+        }  
+        &:hover {
+            background: @pomarancz;
+            border: 1px solid @pomarancz;
+        }
+    }
+}
+/*@media screen and (min-width: 1300px) {
+    body.row main.col-md-10 {
+        section#zaufali-nam div.col-md-4, section#o-nas div.col-md-4 {
+            background-size: 100%;
+        }
+    }
+}*/

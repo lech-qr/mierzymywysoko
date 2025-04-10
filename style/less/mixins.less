@@ -1,0 +1,72 @@
+.radius (@radius) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius:    @radius;
+	border-radius:         @radius;
+}
+.transition (@transition) {
+	-webkit-transition: @transition;  
+	-moz-transition:    @transition;
+	-ms-transition:     @transition; 
+	-o-transition:      @transition;  
+}
+
+.opacity (@opacity) {
+	-webkit-opacity: 	@opacity;
+	-moz-opacity: 		@opacity;
+	opacity: 		@opacity;
+}
+
+.box-sizing (@box-sizing) {
+	-webkit-box-sizing: @box-sizing;
+	-moz-box-sizing:    @box-sizing;
+	box-sizing:         @box-sizing;
+}
+
+.rotate (@deg) {
+	-webkit-transform: rotate(@deg);
+	-moz-transform:          rotate(@deg);
+	-ms-transform: 		 rotate(@deg);
+	-o-transform: 		 rotate(@deg);
+}
+.scale (@factor) {
+	-webkit-transform: scale(@factor);
+	-moz-transform: 	 scale(@factor);
+	-ms-transform: 		 scale(@factor);
+	-o-transform: 		 scale(@factor);
+}
+.blur (@blur) {
+        -webkit-filter: blur(@blur);
+        -moz-filter: blur(@blur);
+        -o-filter: blur(@blur);
+        -ms-filter: blur(@blur);
+        filter: blur(@blur);    
+}
+.placeholder(@rules) {
+    &::-webkit-input-placeholder {
+        @rules();
+    }
+    &:-moz-placeholder {
+        @rules();
+    }
+    &::-moz-placeholder {
+        @rules();
+    }
+    &:-ms-input-placeholder {
+        @rules();
+    }
+}
+.column (@column) {
+    column-count: @column;
+    -moz-column-count: @column;
+    -webkit-column-count: @column;     
+}
+.breakInside {
+    -webkit-column-break-inside: avoid;
+              page-break-inside: avoid;
+                   break-inside: avoid;    
+}
+.grayscale (@grayscale) {
+    -webkit-filter: grayscale(@grayscale);
+    filter: grayscale(@grayscale);
+}
+
