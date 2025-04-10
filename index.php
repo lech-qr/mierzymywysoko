@@ -9,15 +9,15 @@
         <meta name="author" content="Jet IT - www.jet-it.pl">
         <meta name="keywords" content="Lublin, Lubelskie, Świdnik, Geodeta, Geodezja i pochodne, Pomiar, Podział, Rozgraniczenie, Nieruchomość, Mapa, Granica, Budynek, Projekt budowlany, Przyłącze, Inwentaryzacja">
 
-        <link rel="shortcut icon" href="/grafiki/favicon/favicon.ico"/>
-        <link rel="apple-touch-icon" href="/grafiki/favicon/apple_icons_57x57.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/grafiki/favicon/apple_icons_72x72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/grafiki/favicon/apple_icons_114x114.png"> 
+        <link rel="shortcut icon" href="grafiki/favicon/favicon.ico"/>
+        <link rel="apple-touch-icon" href="grafiki/favicon/apple_icons_57x57.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="grafiki/favicon/apple_icons_72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="grafiki/favicon/apple_icons_114x114.png"> 
         
         <link rel="stylesheet" href="fonty/font-awesome/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="/style/css/style_v1.css" type="text/css" />
-        <link rel="stylesheet" href="/style/css/mobilne_v1.css" type="text/css" />
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="style/css/style_v1.css" type="text/css" />
+        <link rel="stylesheet" href="style/css/mobilne_v1.css" type="text/css" />
 		<!-- Google Tag Manager -->
 		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -49,7 +49,7 @@
             <div class="przyklej col-md-2 col-sm-12">
                 <div id="logo">
                     <a href="#home">
-                        <img src="/grafiki/logo.svg" width="160" height="65" alt="Mierzymy Wysoko - Logo">
+                        <img src="grafiki/logo.svg" width="160" height="65" alt="Mierzymy Wysoko - Logo">
                     </a>
                 </div>
                 <nav>
@@ -232,12 +232,12 @@
                     <div class="blok">
                         <h1>Zaufali nam.</h1>
                         <ul class="row">
-                            <li class="col-md-3 col-sm-6 col-xs-6"><a href="" target="_blank"><img src="/grafiki/logotypy/word.jpg" alt="" /></a></li>
-                            <li class="col-md-3 col-sm-6 col-xs-6"><a href="" target="_blank"><img src="/grafiki/logotypy/melgiew.jpg" alt="" /></a></li>
-                            <li class="col-md-6 col-sm-12 col-xs-12"><a href="" target="_blank"><img src="/grafiki/logotypy/centrum-samochodow-francuskich.jpg" alt="" /></a></li>
-                            <li class="col-md-6 col-sm-12 col-xs-12"><a href="" target="_blank"><img src="/grafiki/logotypy/polubzielen.jpg" alt="" /></a></li>
-                            <li class="col-md-3 col-sm-6 col-xs-6"><a href="" target="_blank"><img src="/grafiki/logotypy/rodzice-w-sieci.jpg" alt="" /></a></li>
-                            <li class="col-md-3 col-sm-6 col-xs-6"><a href="" target="_blank"><img src="/grafiki/logotypy/trawniki.jpg" alt="" /></a></li>
+                            <li class="col-md-3 col-sm-6 col-xs-6"><a href="" target="_blank"><img src="grafiki/logotypy/word.jpg" alt="" /></a></li>
+                            <li class="col-md-3 col-sm-6 col-xs-6"><a href="" target="_blank"><img src="grafiki/logotypy/melgiew.jpg" alt="" /></a></li>
+                            <li class="col-md-6 col-sm-12 col-xs-12"><a href="" target="_blank"><img src="grafiki/logotypy/centrum-samochodow-francuskich.jpg" alt="" /></a></li>
+                            <li class="col-md-6 col-sm-12 col-xs-12"><a href="" target="_blank"><img src="grafiki/logotypy/polubzielen.jpg" alt="" /></a></li>
+                            <li class="col-md-3 col-sm-6 col-xs-6"><a href="" target="_blank"><img src="grafiki/logotypy/rodzice-w-sieci.jpg" alt="" /></a></li>
+                            <li class="col-md-3 col-sm-6 col-xs-6"><a href="" target="_blank"><img src="grafiki/logotypy/trawniki.jpg" alt="" /></a></li>
                         </ul>
                     </div>
                 </div>
@@ -247,16 +247,15 @@
                 <div class="col-md-8 col-xs-12">
                     <div class="blok">
                         <h1>Kontakt.</h1>
-                        <strong>Mierzymy Wysoko</strong>
+                        <strong>Mierzymy Wysoko 123</strong>
                         <p><a href="mailto:biuro@mierzymywysoko.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>biuro@mierzymywysoko.com</a></p>
                         <p><a href="tel:+48690300008"><i class="fa fa-mobile" aria-hidden="true"></i>+48 690 300 008</a></p>                  
-                        <form action="php/mail.php" method="post" class="pyt-form" id="recaptcha-form">
+                        <form action="php/mail.php" method="post" class="pyt-form" id="contact-form">
                             <input type="text" name="geo_imie" id="imie" placeholder="Imię i nazwisko" required />
                             <input type="text" name="geo_tel" id="telefon" placeholder="Numer telefonu" required />
-                            <input type="text" name="fax" id="fax" placeholder="Nr faxu" />
                             <input type="email" name="geo_mail" id="email" placeholder="Adres email" required />
                             <textarea name="geo_tresc" id="tresc" placeholder="Treść wiadomości" required ></textarea>
-                            <button class="btn g-recaptcha" type="submit" value="Wyślij wiadomość" data-sitekey="6Lcy1R0gAAAAALK8Djf7dYVWEe_-tDdgqvqyw-lU" data-callback='onSubmit' data-action='submit'>Wyślij wiadomość</button>
+                            <button class="btn" type="submit" value="Wyślij wiadomość">Wyślij wiadomość</button>
                         </form>                        
                         
                     </div>
@@ -274,9 +273,9 @@
         </main>  
         <i id="na-gore" class="fa fa-angle-up" aria-hidden="true"></i>
         
-        <script src="/skrypty/jquery-3.2.1.min.js"></script>
-        <script src="/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/skrypty/skrypty.min.js"></script> 
+        <script src="skrypty/jquery-3.2.1.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="skrypty/skrypty.min.js"></script> 
         
     </body>
 </html>
