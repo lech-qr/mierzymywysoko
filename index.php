@@ -32,13 +32,7 @@
           gtag('js', new Date());
 
           gtag('config', 'UA-114577817-1');
-        </script>
-        <script src="https://www.google.com/recaptcha/api.js"></script>
-	<script>
-	   function onSubmit(token) {
-	     document.getElementById("recaptcha-form").submit();
-	   }
-	</script>       
+        </script>    
     </head>
     <body class="row">
 		<!-- Google Tag Manager (noscript) -->
@@ -255,9 +249,18 @@
                             <input type="text" name="geo_tel" id="telefon" placeholder="Numer telefonu" required />
                             <input type="email" name="geo_mail" id="email" placeholder="Adres email" required />
                             <textarea name="geo_tresc" id="tresc" placeholder="Treść wiadomości" required ></textarea>
+                            <input type="hidden" name="recaptcha_token" id="recaptcha_token">
+
                             <button class="btn" type="submit" value="Wyślij wiadomość">Wyślij wiadomość</button>
-                        </form>                        
-                        
+
+                            <script src="https://www.google.com/recaptcha/api.js?render=6Le7MrodAAAAAKhQ1VGAf4a5QSuL1clkCD_FiMab"></script>
+                            <script>
+                                grecaptcha.ready(function () {
+                                    grecaptcha.execute('6Le7MrodAAAAAKhQ1VGAf4a5QSuL1clkCD_FiMab', { action: 'submit' }).then(function (token) {
+                                        document.getElementById('recaptcha_token').value = token;
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class="col-md-4 d-none d-sm-block"></div>                

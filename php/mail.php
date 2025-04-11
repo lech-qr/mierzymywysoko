@@ -1,54 +1,64 @@
 <?php
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Pobieranie i filtrowanie danych z formularza
-    $imie = filter_input(INPUT_POST, "geo_imie", FILTER_SANITIZE_STRING);
-    $telefon = filter_input(INPUT_POST, "geo_tel", FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, "geo_mail", FILTER_VALIDATE_EMAIL);
-    $tresc = htmlspecialchars($_POST["geo_tresc"]);
+    // Pobierz klucz prywatny reCAPTCHA
+    $secretKey = "6Le7MrodAAAAANPxzqCU9cQ6JJD6lOHbc_5jpp2l"; // Klucz prywatny z Google
 
-    // Walidacja serwera
-    if (empty($imie) || empty($telefon) || empty($email) || empty($tresc)) {
-        http_response_code(400); // Błąd - brak wymaganych pól
-        echo "Proszę wypełnić wszystkie wymagane pola.";
-        exit;
-    }
+    // Pobierz token reCAPTCHA od użytkownika
+    $recaptchaToken = $_POST['recaptcha_token'] ?? '';
 
-    if (!$email) {
-        http_response_code(400); // Błąd walidacji e-maila
-        echo "Podano nieprawidłowy adres email.";
-        exit;
-    }
+    // Weryfikacja reCAPTCHA z serwerem Google
+    $url = "https://www.google.com/recaptcha/api/siteverify";
+    $data = [
+        'secret' => $secretKey,
+        'response' => $recaptchaToken,
+        'remoteip' => $_SERVER['REMOTE_ADDR'], // Opcjonalny adres IP klienta
+    ];
 
-    // Adres odbiorcy oraz nadawcy
-    $to = "lech@jet-it.pl"; // Główne e-mail odbiorcy
+    // Wyślij żądanie POST do serwera Google
+    $options = [
+        'http' => [
+            'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+            'method' => 'POST',
+            'content' => http_build_query($data),
+        ],
+    ];
+    $context = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+    $response = json_decode($result, true);
+
+    // Sprawdź wynik weryfikacji
+    if ($response['success'] === true && $response['score'] >= 0.5 && $response['action'] === 'submit') {
+        // Jeśli weryfikacja spowodzeniem - kontynuuj obsługę formularza
+        $imie = filter_input(INPUT_POST, 'geo_imie', FILTER_SANITIZE_STRING);
+        $tel = filter_input(INPUT_POST, 'geo_tel', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'geo_mail', FILTER_VALIDATE_EMAIL);
+        $tresc = filter_input(INPUT_POST, 'geo_tresc', FILTER_SANITIZE_STRING);
+
+        // Walidacja danych formularza
+        if (!$imie || !$tel || !$email || !$tresc) {
+            echo "Wszystkie pola formularza są wymagane!";
+            exit;
+        }
+
+    // Wysyłanie maila
+    $to = "karolina@everestmarketing.pl";
+    $from = "formularz@serwer044295.home.pl";
     $subject = "Formularz ze strony mierzymywysoko.com";
-    
-    // Przygotowanie treści wiadomości
-    $message = "
-Imię i nazwisko: $imie\n
-Numer telefonu: $telefon\n
-Adres email: $email\n\n
-Treść wiadomości:\n$tresc\n
-    ";
-
-    // Ustawienie nagłówków wiadomości
-    $from = "formularz@serwer044295.home.pl"; // Adres nadawcy
-    $bcc = "info@jet-it.pl"; // Adres do ukrytej kopii (BCC)
-    
+    $message = "Imię: $imie\nTelefon: $tel\nEmail: $email\n\nWiadomość: $tresc";
     $headers = "From: $from\r\n";
-    $headers .= "Reply-To: $email\r\n"; // Jeśli ktoś odpowie, wiadomość trafi do nadawcy wiadomości
-    $headers .= "BCC: $bcc\r\n"; // Dodanie adresu BCC
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "BCC: info@jet-it.pl\r\n";
 
-    // Wysyłka e-mail
     if (mail($to, $subject, $message, $headers)) {
-        http_response_code(200); // Sukces
         echo "Wiadomość została wysłana pomyślnie!";
     } else {
-        http_response_code(500); // Błąd serwera
-        echo "Nie udało się wysłać wiadomości. Spróbuj ponownie.";
+        echo "Nie udało się wysłać wiadomości. Spróbuj ponownie później.";
     }
 } else {
-    http_response_code(405); // Metoda nieobsługiwana
-    echo "Niewłaściwa metoda zapytania.";
+    // reCAPTCHA nie zdała testu
+    echo "Nie udało się zweryfikować reCAPTCHA. Możesz być botem. Spróbuj ponownie.";
+    exit;
+}
+
 }
