@@ -241,7 +241,7 @@
                 <div class="col-md-8 col-xs-12">
                     <div class="blok">
                         <h1>Kontakt.</h1>
-                        <strong>Mierzymy Wysoko 123</strong>
+                        <strong>Mierzymy Wysoko</strong>
                         <p><a href="mailto:biuro@mierzymywysoko.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>biuro@mierzymywysoko.com</a></p>
                         <p><a href="tel:+48690300008"><i class="fa fa-mobile" aria-hidden="true"></i>+48 690 300 008</a></p>                  
                         <form action="php/mail.php" method="post" class="pyt-form" id="contact-form">
