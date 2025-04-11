@@ -2,7 +2,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Pobierz klucz prywatny reCAPTCHA
-    $secretKey = "6Le7MrodAAAAANPxzqCU9cQ6JJD6lOHbc_5jpp2l"; // Klucz prywatny z Google
+    $secretKey = ""; // Klucz prywatny z Google
 
     // Pobierz token reCAPTCHA od użytkownika
     $recaptchaToken = $_POST['recaptcha_token'] ?? '';
